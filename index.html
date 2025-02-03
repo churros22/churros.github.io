@@ -3,137 +3,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CBE#4 - Mindmaps</title>
+  <title>CBE#4</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --primary: #0066cc;
-      --primary-light: #e6f2ff;
-      --card-bg: #ffffff;
-      --radius: 8px;
-      --text-color: #333;
-      --transition-speed: 0.3s;
-    }
-    /* Simple fade-in keyframes */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: var(--text-color);
-      background: linear-gradient(to bottom right, #f0f9ff, #cbebff);
-      animation: fadeIn 0.5s ease-in-out;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, var(--primary-light), #f5fafd);
-      border-bottom: 2px solid rgba(0,0,0,0.05);
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    header h1 {
-      margin-bottom: 8px;
-      color: var(--primary);
-    }
-    header h2 {
-      margin: 0;
-      font-size: 1rem;
-      color: #555;
-    }
-    .nav-menu {
-      background: rgba(0, 102, 204, 0.05);
-      padding: 15px 0;
-      text-align: center;
-      margin-bottom: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
-    .nav-menu a {
-      color: var(--primary);
-      text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 8px;
-      border-radius: var(--radius);
-      transition: background var(--transition-speed), color var(--transition-speed);
-    }
-    .nav-menu a:hover {
-      background: var(--primary);
-      color: #fff;
-    }
-    main {
-      max-width: 1400px;
-      margin: 0 auto 40px;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      animation: fadeIn 1s ease-in-out;
-    }
-    .section-title {
-      grid-column: 1 / -1;
-      margin-bottom: 15px;
-      text-align: center;
-      color: var(--primary);
-    }
-    .card {
-      background-color: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border: 1px solid rgba(0,0,0,0.05);
-      padding: 15px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      animation: fadeIn 1s ease-in-out;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-    .card ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    .card ul li {
-      margin: 6px 0;
-    }
-    .card ul li a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--primary);
-      transition: all var(--transition-speed);
-    }
-    .card ul li a:hover {
-      color: var(--primary);
-    }
-    .empty-group {
-      color: #777;
-      font-style: italic;
-    }
-    footer {
-      text-align: center;
-      margin: 20px auto;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+  <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
 <header>
+  <div class="header-content">
+  <img class="logo" src="Logotopglove.png" alt="CBE#4 Logo">
   <h1>CBE#4 - Process Validation</h1>
   <h2>La dernière mise à jour : 02/02/2025</h2>
+</div>
 </header>
 
 <div class="nav-menu">
@@ -186,23 +66,8 @@
       <li><a href="Mindmaps/hadjam_acceptance_sampling.html">02-Acceptance Sampling</a></li>
     </ul>
   </div>
-  
-   <!-- Line separator and new section title -->
-  <hr style="
-  grid-column: 1 / -1;
-  margin: 30px 0;
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--primary), transparent);
-  opacity: 0;
-  animation: fadeIn 1.5s ease-in-out forwards;
-"/>
-
-<h2 class="section-title" style="
-  margin-top: 20px;
-  opacity: 0;
-  animation: fadeIn 1.5s ease-in-out forwards;
-">Metrology Handbook</h2>
+<hr>
+<h2 class="section-title">Metrology Handbook</h2>
   <!-- LALIBI Rekia Hafsa Card -->
   <div class="card">
     <h2>LALIBI Rekia Hafsa</h2>

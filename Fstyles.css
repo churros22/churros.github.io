@@ -1,0 +1,91 @@
+/* BASIC CARD STYLING */
+.card2 {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    font-family: sans-serif;
+  }
+  
+  .card2 hr {
+    margin: 12px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* IMAGE STYLING */
+  .card2 img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  .card2 img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* LINK STYLING */
+  .card2 a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  
+  .card2 a:hover {
+    text-decoration: underline;
+  }
+  
+ /* Fullscreen lightbox */
+#fullscreen-toggle {
+  display: none;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+#fullscreen-toggle:checked ~ .lightbox {
+  display: flex;
+}
+
+.lightbox-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: zoom-out;
+}
+
+/* The zoom-wrapper ensures the background label remains clickable */
+.zoom-wrapper {
+  position: relative;
+  pointer-events: auto;
+}
+
+/* LIGHTBOX IMAGE */
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: zoom-in;
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  border-radius: 4px;
+}
