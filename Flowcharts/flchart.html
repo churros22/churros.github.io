@@ -1,4 +1,3 @@
-<!-- flowcharts.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,42 +8,53 @@
   <link rel="stylesheet" href="../Fstyles.css">
 </head>
 <body>
-<header>
-  <h1>CBE#4 - Process Validation</h1>
-  <h2>La dernière mise à jour : 02/02/2025</h2>
-</header>
+  <header>
+    <h1>CBE#4 - Process Validation</h1>
+    <h2>La dernière mise à jour : 16/02/2025</h2>
+  </header>
 
-<div class="nav-menu">
-  <a href="../index.html">Mindmaps</a>
-  <a href="../Flowcharts/flchart.html">Flowcharts</a>
-  <a href="../SPC/statisticpc.html">SPC</a>
-</div>
+  <nav class="nav-menu">
+    <a href="../index.html">Mindmaps</a>
+    <a href="../Flowcharts/flchart.html">Flowcharts</a>
+    <a href="../SPC/statisticpc.html">SPC</a>
+  </nav>
 
+  <main>
+    <section class="cards-container">
+      <div class="card2">
+        <h3>Flowchart Exam</h3>
+        <!-- Clicking the image will trigger the fullscreen lightbox in script.js -->
+        <img src="../Flowcharts/exam.png" alt="Preparation" class="flowchart-img">
+        <hr>
+        <ul>
+          <li>
+            <a href="../Flowcharts/diagramme_de_flux_de_prep_exam_gloves.html">
+              Process de Preparation Pour Gants -Exam-
+            </a>
+          </li>
+        </ul>
+      </div>
 
-<main>
-  <h2 class="section-title">Flowcharts</h2>
-  <!-- CARD -->
-  <div class="card2">
-    <!-- Toggle for fullscreen pop-up -->
-    <label for="fullscreen-toggle">
-      <img src="../Flowcharts/process_flow_latex_coagulant.png" alt="Preparation">
-    </label>
-    <hr>
-    <li><a href="../Flowcharts/process_flow_latex_coagulant.html">Process de Preparation du Latex et Coagulant</a></li>
-  </div>
+      <div class="card2">
+        <h3>Flowchart Surgi</h3>
+        <img src="../Flowcharts/surgi.png" alt="Preparation-surgi" class="flowchart-img">
+        <hr>
+        <ul>
+          <li>
+            <a href="../Flowcharts/diagramme_de_flux_de_prep_surgi_gloves.html">
+              Process de Preparation Pour Gants -Surgi-
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <input type="checkbox" id="fullscreen-toggle">
+    <!-- The lightbox overlay (fullscreen container) is created dynamically by script.js -->
+    <script src="../script.js"></script>
+  </main>
 
-  <!-- FULLSCREEN LIGHTBOX OVERLAY -->
-  <div class="lightbox" id="lightbox">
-    <label class="lightbox-background" for="fullscreen-toggle"></label>
-    <div class="zoom-wrapper">
-    <img src="../Flowcharts/process_flow_latex_coagulant.png" alt="Preparation" class="lightbox-image" id="zoomImage">
-  </div>
-  </div>
-  <script src="../script.js"></script>
-</main>
-
-<footer>&copy; 2025 CBE#4 - Process Validation. All rights reserved.</footer>
+  <footer>
+    &copy; 2025 CBE#4 - Process Validation. All rights reserved.
+  </footer>
 </body>
 </html>

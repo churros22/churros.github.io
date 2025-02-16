@@ -11,7 +11,7 @@
 <body>
 <header>
   <h1>CBE#4 - Process Validation</h1>
-  <h2>La dernière mise à jour : 02/02/2025</h2>
+  <h2>La dernière mise à jour : 16/02/2025</h2>
 </header>
 
 <div class="nav-menu">
@@ -23,22 +23,31 @@
 <main>
   <h2 class="section-title">SPC Dashbords</h2>
 </main>
-
 <main2>
-  <hr>
   <div class="container">
-  <div class="google-sheet-card">
-    <iframe
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLF_b90Us8oge69ej3WKtAmnIKM2A1yfUPAixfgtqFBCr1Hodt3y0nwJGy77pYqjgDGHLNP10bJJZr/pubhtml?widget=true&amp;headers=false"
-        frameborder="0"
+    <div class="google-sheet-card">
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+      <iframe id="googleSheetFrame"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRAQqssp6Rp6oa6IKDDRUaqSXtFuvm_QKe7CLQqXG3UpMCLVy7AGHaW77stO1J5unzrPtY73XXZxUSa/pubhtml?widget=true&amp;headers=false"
         allowfullscreen="true"
         mozallowfullscreen="true"
         webkitallowfullscreen="true">
-    </iframe>
+      </iframe>
+    </div>
   </div>
-</div>
-</main2>
-
-<footer>&copy; 2025 CBE#4 - Process Validation. All rights reserved.</footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('googleSheetFrame');
+    const googleCard = document.querySelector('.google-sheet-card');
+    
+    // Hide loader once the iframe content is loaded
+    iframe.addEventListener('load', () => {
+      googleCard.classList.add("loaded");
+    });
+  });
+</script>
+  </main2>
 </body>
 </html>

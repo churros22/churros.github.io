@@ -1,44 +1,91 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const checkbox = document.getElementById('fullscreen-toggle');
-  const zoomImage = document.getElementById('zoomImage');
-  let scale = 0.75;
-  const zoomSpeed = 0.1;
-  const maxZoom = 4;
-  const minZoom = 0.3;
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all images that should trigger the lightbox by using the "flowchart-img" class
+  const flowchartImgs = document.querySelectorAll('.flowchart-img');
+  
+  // Define constants for zoom
+  let currentScale = 1;
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 3;
+  const SCALE_STEP = 0.1;
 
-  // Apply initial scale when lightbox opens
-  checkbox.addEventListener('change', function() {
-    if (checkbox.checked) {
-      scale = 0.75;
-      zoomImage.style.transform = 'scale(0.75)';
-      zoomImage.style.transformOrigin = 'center center';
+  // Create and configure the fullscreen container
+  const fullscreenContainer = document.createElement('div');
+  fullscreenContainer.id = 'fullscreen-container';
+
+  // Create the fullscreen image element
+  const fullscreenImage = document.createElement('img');
+  fullscreenImage.id = 'fullscreen-image';
+
+  // Create zoom controls with two buttons: zoom in and zoom out
+  const zoomControls = document.createElement('div');
+  zoomControls.className = 'zoom-controls';
+  zoomControls.innerHTML = `
+    <button class="zoom-btn zoom-in">+</button>
+    <button class="zoom-btn zoom-out">&minus;</button>
+  `;
+
+  // Append the image and zoom controls to the fullscreen container
+  fullscreenContainer.appendChild(fullscreenImage);
+  fullscreenContainer.appendChild(zoomControls);
+  document.body.appendChild(fullscreenContainer);
+
+  // Function to update the image scale based on currentScale
+  function updateImageScale() {
+    fullscreenImage.style.transform = `scale(${currentScale})`;
+  }
+
+  // Listen for clicks on any card image
+  flowchartImgs.forEach((img) => {
+    img.addEventListener('click', function () {
+      // Set the fullscreen image source to match the clicked image
+      fullscreenImage.src = this.src;
+      // Reset scale to default when opening
+      currentScale = 1;
+      updateImageScale();
+      fullscreenContainer.classList.add('active');
+    });
+  });
+
+  // Zoom button event listeners
+  zoomControls.querySelector('.zoom-in').addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (currentScale < MAX_SCALE) {
+      currentScale += SCALE_STEP;
+      updateImageScale();
     }
   });
 
-  // Wheel-based zoom with pointer-based transform origin
-  zoomImage.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    // Determine zoom direction
-    const zoomIn = e.deltaY < 0;
-
-    // Set scale boundaries
-    if (zoomIn) {
-      scale = Math.min(scale + zoomSpeed, maxZoom);
-    } else {
-      scale = Math.max(scale - zoomSpeed, minZoom);
+  zoomControls.querySelector('.zoom-out').addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (currentScale > MIN_SCALE) {
+      currentScale -= SCALE_STEP;
+      updateImageScale();
     }
+  });
 
-    // Calculate the position of mouse pointer relative to the image
-    const rect = zoomImage.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const offsetY = e.clientY - rect.top;
-    const originX = (offsetX / rect.width) * 100;
-    const originY = (offsetY / rect.height) * 100;
+  // Hide the fullscreen container when clicking outside the image or on the container itself
+  fullscreenContainer.addEventListener('click', function (e) {
+    if (e.target !== fullscreenImage && !e.target.classList.contains('zoom-btn')) {
+      fullscreenContainer.classList.remove('active');
+    }
+  });
 
-    // Update transform origin to where the mouse pointer is
-    zoomImage.style.transformOrigin = `${originX}% ${originY}%`;
-
-    // Apply the new scale
-    zoomImage.style.transform = `scale(${scale})`;
+  // Keyboard Support for closing with Escape and zooming with '+'/'-' keys
+  document.addEventListener('keydown', function (e) {
+    if (fullscreenContainer.classList.contains('active')) {
+      if (e.key === 'Escape') {
+        fullscreenContainer.classList.remove('active');
+      } else if (e.key === '+' || e.key === '=') {
+        if (currentScale < MAX_SCALE) {
+          currentScale += SCALE_STEP;
+          updateImageScale();
+        }
+      } else if (e.key === '-' || e.key === '_') {
+        if (currentScale > MIN_SCALE) {
+          currentScale -= SCALE_STEP;
+          updateImageScale();
+        }
+      }
+    }
   });
 });
